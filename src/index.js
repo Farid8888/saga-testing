@@ -3,11 +3,28 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {createStore,compose,applyMiddleware} from 'redux'
+import { forbiddenMiddleware } from './store/middleware';
+import {Provider} from 'react-redux'
+import thunk from 'redux-thunk'
+import { RootReducer } from './store/RootReducer';
+import { sagaMain } from './store/saga';
+import createSagaMiddleware from 'redux-saga'
 
+
+const saga =createSagaMiddleware()
+const store = createStore(RootReducer,
+  compose(applyMiddleware(thunk,forbiddenMiddleware,saga))
+  )
+
+  saga.run(sagaMain)
 ReactDOM.render(
+  <Provider store={store}>
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
+  </React.StrictMode>
+  </Provider>
+,
   document.getElementById('root')
 );
 

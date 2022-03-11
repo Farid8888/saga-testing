@@ -1,0 +1,30 @@
+.titleFlex{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.titleFlex label{
+    margin-bottom: 10px;
+}
+
+.titleFlex input{
+    padding: 10px 3px;
+    border: 1px solid rgba(209, 204, 204, 0.664);
+    outline: none;
+}
+
+
+
+.btn button{
+    background-color: rgb(57, 170, 57);
+    color: white;
+    border: none;
+    padding: 7px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn button:hover{
+    background-color: green;
+}

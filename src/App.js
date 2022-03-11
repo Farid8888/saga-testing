@@ -1,23 +1,17 @@
-import logo from './logo.svg';
+import TitleForm from './components/TitleForm';
+import Posts from './components/Posts';
+import {useSelector} from 'react-redux'
 import './App.css';
 
+
 function App() {
+  const noPosts = useSelector(state=>state.syncPosts.posts)
+  console.log(noPosts)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {noPosts && <input className="noPosts" value={noPosts} readOnly/>}
+    <TitleForm/>
+    <Posts/>
     </div>
   );
 }
